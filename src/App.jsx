@@ -144,10 +144,10 @@ const Portfolio = () => {
                 <div
                   className={`w-full h-full ${themeClasses.cardBg} flex items-center justify-center text-4xl font-bold ${themeClasses.text}`}
                 >
-                  <img src="/public/avatar.jpg" alt="avatar" />
+                  <img src="/public/avatar.png" alt="avatar" />
                 </div>
               </div>
-              <div className="max-w-md mx-auto flex flex-col items-center">
+              <div className="max-w-md mx-auto flex flex-col items-center py-4">
                 <h1
                   className={`text-4xl md:text-5xl font-bold mb-4 ${themeClasses.text}`}
                 >
@@ -160,7 +160,7 @@ const Portfolio = () => {
             </div>
 
             {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto py-4">
               <div
                 className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
               >
@@ -278,7 +278,7 @@ const Portfolio = () => {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-1">
+          <section id="about" className="py-1 ">
             <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
               About
             </h2>
