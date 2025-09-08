@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Github,
   Linkedin,
@@ -6,22 +6,31 @@ import {
   Instagram,
   MapPin,
   Mail,
+  Phone,
   ExternalLink,
   Star,
   GitFork,
+  Sun,
+  Moon,
+  Code,
+  Lightbulb,
+  Globe,
+  GraduationCap,
 } from "lucide-react";
 
 const Portfolio = () => {
+  const [isDark, setIsDark] = useState(true);
+
   const skills = [
     "MERN",
-    "tailwindcss",
-    "vue",
+    "TailwindCSS",
+    "Vue",
     "JavaScript",
-    "frappe framework",
+    "Frappe Framework",
     "Git",
     "Python",
     "C++",
-    "Oops",
+    "OOP",
     "Data Structures",
     "SQL",
   ];
@@ -42,14 +51,14 @@ const Portfolio = () => {
       link: "https://github.com/YASH-SAWARKAR/_React/tree/main/12MegaBlog",
     },
     {
-      name: "Frappe CRM APP",
+      name: "Contribution toFrappe CRM APP",
       description:
         "A CRM is an Open Source application built using the Frappe framework to manage customer relationships and sales processes.",
-      tech: ["Vue", "Typescript", "python", "Git", "frappe framework"],
+      tech: ["Vue", "TypeScript", "Python", "Git", "Frappe Framework"],
       link: "https://github.com/YASH-SAWARKAR/crm",
     },
     {
-      name: "JOB PORTAL",
+      name: "Job Portal",
       description:
         "A comprehensive job portal application that connects job seekers with employers, featuring job listings, applications, and user profiles.",
       tech: ["React", "MongoDB", "Express", "Node.js"],
@@ -57,113 +66,251 @@ const Portfolio = () => {
     },
   ];
 
+  const themeClasses = {
+    bg: isDark ? "bg-black" : "bg-white",
+    text: isDark ? "text-white" : "text-black",
+    textSecondary: isDark ? "text-gray-400" : "text-gray-600",
+    textMuted: isDark ? "text-gray-500" : "text-gray-500",
+    border: isDark ? "border-gray-800" : "border-gray-200",
+    cardBg: isDark ? "bg-black" : "bg-white",
+    hoverBg: isDark ? "hover:bg-gray-800" : "hover:bg-gray-100",
+    accent: isDark ? "text-white" : "text-black",
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex">
-      {/* Left Sidebar - Profile Info */}
-      <div className="w-80 bg-white/10 backdrop-blur-lg p-8 border-r border-white/20">
-        {/* Profile Photo */}
-        <div className="text-center mb-8">
-          <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1 shadow-lg">
-            <img
-              src="/public/avatar.jpg"
-              alt="Profile"
-              className="w-full h-full rounded-full object-cover object-center"
-            />
-          </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Yash</h1>
-          <p className="text-lg text-gray-300 mb-1">Software Engineer </p>
-        </div>
-
-        {/* Contact Info */}
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center text-gray-300">
-            <Mail className="w-5 h-5 mr-4 text-gray-400" />
-            <span className="text-sm">sawarkarwork@gamil.com</span>
-          </div>
-          <div className="flex items-center text-gray-300">
-            <MapPin className="w-5 h-5 mr-4 text-gray-400" />
-            <span className="text-sm">Nagpur, India</span>
-          </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="mb-8">
-          <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-            Connect
-          </h3>
-          <div className="space-y-3">
-            <a
-              href="https://github.com/YASH-SAWARKAR"
-              className="flex items-center p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group border border-white/10"
-            >
-              <Github className="w-5 h-5 text-gray-400 group-hover:text-white mr-4 transition-colors" />
-              <span className="text-gray-300 group-hover:text-white transition-colors">
-                GitHub
-              </span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/yash-sawarkar-9b8857298/"
-              className="flex items-center p-3 rounded-xl bg-white/5 hover:bg-blue-600/20 transition-all duration-300 group border border-white/10 hover:border-blue-400/50"
-            >
-              <Linkedin className="w-5 h-5 text-blue-400 group-hover:text-blue-300 mr-4 transition-colors" />
-              <span className="text-gray-300 group-hover:text-white transition-colors">
-                LinkedIn
-              </span>
-            </a>
-
-            <a
-              href="https://www.instagram.com/s.yash_1/"
-              className="flex items-center p-3 rounded-xl bg-white/5 hover:bg-pink-600/20 transition-all duration-300 group border border-white/10 hover:border-pink-400/50"
-            >
-              <Instagram className="w-5 h-5 text-pink-400 group-hover:text-pink-300 mr-4 transition-colors" />
-              <span className="text-gray-300 group-hover:text-white transition-colors">
-                Instagram
-              </span>
-            </a>
+    <div
+      className={`min-h-screen transition-colors duration-300 ${themeClasses.bg}`}
+    >
+      {/* Navigation */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 ${themeClasses.bg} ${themeClasses.border} border-b backdrop-blur-sm bg-opacity-80`}
+      >
+        <div className="max-w-4xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-8">
+              <h1 className={`text-xl font-bold ${themeClasses.text}`}>
+                Portfolio
+              </h1>
+              <div className="hidden md:flex space-x-6">
+                <a
+                  href="#about"
+                  className={`${themeClasses.textSecondary} hover:${themeClasses.accent} transition-colors`}
+                >
+                  About
+                </a>
+                <a
+                  href="#projects"
+                  className={`${themeClasses.textSecondary} hover:${themeClasses.accent} transition-colors`}
+                >
+                  Projects
+                </a>
+                <a
+                  href="#skills"
+                  className={`${themeClasses.textSecondary} hover:${themeClasses.accent} transition-colors`}
+                >
+                  Skills
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <a
+                href="https://github.com/YASH-SAWARKAR"
+                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-colors`}
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-colors`}
+              >
+                {isDark ? (
+                  <Sun className="w-4 h-4" />
+                ) : (
+                  <Moon className="w-4 h-4" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+      </nav>
 
-        {/* Education */}
-        <div>
-          <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">
-            Education
-          </h3>
-          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-            <p className="font-medium text-white">
-              Shri Ramdeobaba College Of Engineering And Management , Nagpur
-            </p>
-            <p className="text-sm text-gray-300 mb-1">B.Tech</p>
-            <p className="text-sm text-gray-400">2021 - 2025</p>
-          </div>
-        </div>
-      </div>
+      {/* Main Content */}
+      <div className="pt-20 pb-16">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Hero Section */}
+          <section className="text-center py-16">
+            <div className="mb-8 flex flex-row">
+              <div className="w-42 h-42 mx-auto mb-6 rounded-full overflow-hidden">
+                <div
+                  className={`w-full h-full ${themeClasses.cardBg} flex items-center justify-center text-4xl font-bold ${themeClasses.text}`}
+                >
+                  <img src="/public/avatar.jpg" alt="avatar" />
+                </div>
+              </div>
+              <div className="max-w-md mx-auto flex flex-col items-center">
+                <h1
+                  className={`text-4xl md:text-5xl font-bold mb-4 ${themeClasses.text}`}
+                >
+                  Yash
+                </h1>
+                <p className={`text-lg ${themeClasses.textSecondary} mb-6`}>
+                  Software Engineer & Open Source Contributor
+                </p>
+              </div>
+            </div>
 
-      {/* Right Content Area */}
-      <div className="flex-1 p-8 overflow-y-auto">
-        <div className="max-w-5xl mx-auto">
+            {/* Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <Code className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`} />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    ROLE
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  Software Engineer
+                </p>
+              </div>
+
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <GraduationCap
+                    className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`}
+                  />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    EDUCATION
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  B.Tech (2021-2025)
+                </p>
+              </div>
+
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <MapPin
+                    className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`}
+                  />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    LOCATION
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  Nagpur, India
+                </p>
+              </div>
+
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <Mail className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`} />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    EMAIL
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  sawarkarwork@gmail.com
+                </p>
+              </div>
+
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <Lightbulb
+                    className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`}
+                  />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    COLLEGE
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  RCOEM Nagpur
+                </p>
+              </div>
+
+              <div
+                className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
+              >
+                <div className="flex items-center mb-2">
+                  <Globe className={`w-4 h-4 mr-2 ${themeClasses.textMuted}`} />
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    SPECIALIZATION
+                  </span>
+                </div>
+                <p className={`font-medium ${themeClasses.text}`}>
+                  Full Stack Development
+                </p>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center space-x-4 mt-8">
+              <a
+                href="https://github.com/YASH-SAWARKAR"
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+              >
+                <Github className={`w-5 h-5 ${themeClasses.textSecondary}`} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/yash-sawarkar-9b8857298/"
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+              >
+                <Linkedin className={`w-5 h-5 ${themeClasses.textSecondary}`} />
+              </a>
+              <a
+                href="https://www.instagram.com/s.yash_1/"
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+              >
+                <Instagram
+                  className={`w-5 h-5 ${themeClasses.textSecondary}`}
+                />
+              </a>
+            </div>
+          </section>
+
           {/* About Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">About Me</h2>
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-              <p className="text-gray-300 leading-relaxed">
+          <section id="about" className="py-1">
+            <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
+              About
+            </h2>
+            <div
+              className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
+            >
+              <p
+                className={`${themeClasses.textSecondary} leading-relaxed text-lg`}
+              >
                 Passionate Software Engineer specializing in building web
-                applications . I love creating elegant, efficient code and
-                contribute to open source.
+                applications. I love creating elegant, efficient code and
+                contribute to open source projects. Currently pursuing B.Tech
+                from Shri Ramdeobaba College Of Engineering And Management,
+                Nagpur, with a focus on full-stack development using modern
+                technologies like MERN stack and Vue.js.
               </p>
             </div>
           </section>
 
           {/* Skills Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6">
+          <section id="skills" className="py-16">
+            <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
               Skills & Technologies
             </h2>
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+            <div
+              className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
+            >
               <div className="flex flex-wrap gap-3">
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 bg-white/10 text-gray-300 rounded-xl text-sm border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className={`px-4 py-2 rounded-lg ${themeClasses.border} border ${themeClasses.textSecondary} ${themeClasses.hoverBg} hover:${themeClasses.accent} transition-all duration-300 cursor-pointer`}
                   >
                     {skill}
                   </span>
@@ -173,40 +320,45 @@ const Portfolio = () => {
           </section>
 
           {/* Projects Section */}
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-6">
+          <section id="projects" className="py-16">
+            <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
               Featured Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/15 hover:scale-105 transition-all duration-300 group"
+                  className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.hoverBg} transition-all duration-300 hover:scale-105`}
                 >
-                  {/* Project Header */}
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors">
+                    <h3
+                      className={`text-xl font-semibold ${themeClasses.text}`}
+                    >
                       {project.name}
                     </h3>
                     <a
                       href={project.link}
-                      className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-2 rounded-lg ${themeClasses.hoverBg} transition-colors`}
                     >
-                      <ExternalLink className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
+                      <ExternalLink
+                        className={`w-4 h-4 ${themeClasses.textMuted}`}
+                      />
                     </a>
                   </div>
 
-                  {/* Project Description */}
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p
+                    className={`${themeClasses.textSecondary} text-sm leading-relaxed mb-4`}
+                  >
                     {project.description}
                   </p>
 
-                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-lg text-xs border border-blue-400/30"
+                        className={`px-2 py-1 text-xs rounded ${themeClasses.border} border ${themeClasses.textMuted}`}
                       >
                         {tech}
                       </span>
