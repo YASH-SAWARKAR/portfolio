@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 import {
   Github,
   Linkedin,
@@ -51,7 +53,7 @@ const Portfolio = () => {
       link: "https://github.com/YASH-SAWARKAR/_React/tree/main/12MegaBlog",
     },
     {
-      name: "Contribution toFrappe CRM APP",
+      name: "Contribution to Frappe CRM APP",
       description:
         "A CRM is an Open Source application built using the Frappe framework to manage customer relationships and sales processes.",
       tech: ["Vue", "TypeScript", "Python", "Git", "Frappe Framework"],
@@ -77,6 +79,51 @@ const Portfolio = () => {
     accent: isDark ? "text-white" : "text-black",
   };
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Replace with your EmailJS credentials
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Replace with your service ID
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Replace with your template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: "Yash Sawarkar",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Replace with your public key
+      );
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setSubmitStatus("error");
+      console.error("Email send failed:", error);
+    }
+
+    setIsSubmitting(false);
+
+    // Clear status after 5 seconds
+    setTimeout(() => setSubmitStatus(null), 5000);
+  };
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${themeClasses.bg}`}
@@ -144,7 +191,7 @@ const Portfolio = () => {
                 <div
                   className={`w-full h-full ${themeClasses.cardBg} flex items-center justify-center text-4xl font-bold ${themeClasses.text}`}
                 >
-                  <img src="/public/avatar.png" alt="avatar" />
+                  <img src="/avatar.png" alt="avatar" />
                 </div>
               </div>
               <div className="max-w-md mx-auto flex flex-col items-center py-4">
@@ -290,10 +337,10 @@ const Portfolio = () => {
               >
                 Passionate Software Engineer specializing in building web
                 applications. I love creating elegant, efficient code and
-                contribute to open source projects. Currently pursuing B.Tech
-                from Shri Ramdeobaba College Of Engineering And Management,
-                Nagpur, with a focus on full-stack development using modern
-                technologies like MERN stack and Vue.js.
+                contribute to open source projects. Completed B.Tech from Shri
+                Ramdeobaba College Of Engineering And Management, Nagpur, with a
+                focus on full-stack development using modern technologies like
+                MERN stack and Vue.js.
               </p>
             </div>
           </section>
@@ -368,6 +415,138 @@ const Portfolio = () => {
               ))}
             </div>
           </section>
+          {/* Footer with Working Contact Form */}
+          <footer
+            className={`${themeClasses.bg} ${themeClasses.border} border-t mt-16`}
+          >
+            <div className="max-w-4xl mx-auto px-6 py-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left Side - Contact Info */}
+                <div>
+                  <h3
+                    className={`text-xl font-bold mb-4 ${themeClasses.text} font-sans`}
+                  >
+                    Get In Touch
+                  </h3>
+                  <p className={`${themeClasses.textSecondary} mb-6`}>
+                    Have a project in mind? Let's discuss how we can work
+                    together.
+                  </p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <Mail className={`w-4 h-4 ${themeClasses.textMuted}`} />
+                      <span className={`${themeClasses.text}`}>
+                        sawarkarwork@gmail.com
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <MapPin className={`w-4 h-4 ${themeClasses.textMuted}`} />
+                      <span className={`${themeClasses.text}`}>
+                        Nagpur, Maharashtra, India
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 mt-6">
+                    <a
+                      href="https://github.com/YASH-SAWARKAR"
+                      className={`p-2 rounded-lg ${themeClasses.hoverBg} transition-colors`}
+                    >
+                      <Github
+                        className={`w-4 h-4 ${themeClasses.textSecondary}`}
+                      />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/yash-sawarkar-9b8857298/"
+                      className={`p-2 rounded-lg ${themeClasses.hoverBg} transition-colors`}
+                    >
+                      <Linkedin
+                        className={`w-4 h-4 ${themeClasses.textSecondary}`}
+                      />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Right Side - Working Contact Form */}
+                <div>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your Name"
+                        required
+                        className={`w-full p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.text} focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none`}
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Your Email"
+                        required
+                        className={`w-full p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.text} focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none`}
+                      />
+                    </div>
+                    <div>
+                      <textarea
+                        rows="4"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder="Your Message"
+                        required
+                        className={`w-full p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.text} focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none`}
+                      />
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`w-full py-3 px-6 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
+                    </button>
+
+                    {/* Status Messages */}
+                    {submitStatus === "success" && (
+                      <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg text-sm">
+                        ✅ Message sent successfully! I'll get back to you soon.
+                      </div>
+                    )}
+
+                    {submitStatus === "error" && (
+                      <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+                        ❌ Failed to send message. Please try again or email me
+                        directly.
+                      </div>
+                    )}
+                  </form>
+                </div>
+              </div>
+
+              <div
+                className={`text-center mt-8 pt-8 ${themeClasses.border} border-t`}
+              >
+                <p className={`text-sm ${themeClasses.textMuted}`}>
+                  © 2024 Yash Sawarkar. All rights reserved.
+                </p>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
     </div>
