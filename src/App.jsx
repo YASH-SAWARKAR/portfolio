@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-
+import { BackgroundLines } from "@/components/ui/background-lines";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 import {
   Github,
   Linkedin,
@@ -20,31 +23,56 @@ import {
   GraduationCap,
 } from "lucide-react";
 
+import {
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
+  SiTailwindcss,
+  SiVuedotjs,
+  SiJavascript,
+  SiGit,
+  SiPython,
+  SiCplusplus,
+  SiMysql,
+  SiTypescript,
+  SiShadcnui,
+} from "react-icons/si";
+import { PiOpenAiLogoLight } from "react-icons/pi";
+
 const Portfolio = () => {
   const [isDark, setIsDark] = useState(true);
 
   const skills = [
-    "MERN",
-    "TailwindCSS",
-    "Vue",
-    "JavaScript",
-    "Frappe Framework",
-    "Git",
-    "Python",
-    "C++",
-    "OOP",
-    "Data Structures",
-    "SQL",
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "Express", icon: SiExpress, color: isDark ? "#fff" : "#000" },
+    { name: "TailwindCSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "Vue", icon: SiVuedotjs, color: "#4FC08D" },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "C++", icon: SiCplusplus, color: "#00599C" },
+    { name: "SQL", icon: SiMysql, color: "#4479A1" },
+    { name: "shadcn/ui", icon: SiShadcnui, color: isDark ? "#fff" : "#000" },
+    {
+      name: "ChatGPT",
+      icon: PiOpenAiLogoLight,
+      color: isDark ? "#fff" : "#000",
+    },
   ];
 
   const projects = [
     {
-      name: "E-Commerce Platform",
+      name: "EzEdits Photo Editor",
       description:
         "Full-stack e-commerce solution built with React and Node.js, featuring user authentication, and real-time inventory management.",
-      tech: ["React", "Node.js", "Express", "MongoDB"],
-      link: "#",
+      tech: ["Next.Js", "React", "Vercel", "Shadcn/UI "],
+      link: "https://ezedits.vercel.app/",
     },
+
     {
       name: "Blog Application",
       description:
@@ -124,6 +152,7 @@ const Portfolio = () => {
     // Clear status after 5 seconds
     setTimeout(() => setSubmitStatus(null), 5000);
   };
+
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${themeClasses.bg}`}
@@ -132,16 +161,16 @@ const Portfolio = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 ${themeClasses.bg} ${themeClasses.border} border-b backdrop-blur-sm bg-opacity-80`}
       >
-        <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="max-w-3xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <h1 className={`text-xl font-bold ${themeClasses.text}`}>
+              <h1 className={`text-xl font-bold ${themeClasses.text} `}>
                 Portfolio
               </h1>
               <div className="hidden md:flex space-x-6">
                 <a
                   href="#about"
-                  className={`${themeClasses.textSecondary} hover:${themeClasses.accent} transition-colors`}
+                  className={`${themeClasses.textSecondary} hover:${themeClasses.accent} transition-colors `}
                 >
                   About
                 </a>
@@ -168,7 +197,7 @@ const Portfolio = () => {
               </a>
               <button
                 onClick={() => setIsDark(!isDark)}
-                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-colors`}
+                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-colors hover:cursor-pointer`}
               >
                 {isDark ? (
                   <Sun className="w-4 h-4" />
@@ -182,11 +211,12 @@ const Portfolio = () => {
       </nav>
 
       {/* Main Content */}
+
       <div className="pt-20 pb-16">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto px-6">
           {/* Hero Section */}
           <section className="text-center py-16">
-            <div className="mb-8 flex flex-row">
+            <div className="mb-8 flex flex-col md:flex-row items-center">
               <div className="w-42 h-42 mx-auto mb-6 rounded-full overflow-hidden">
                 <div
                   className={`w-full h-full ${themeClasses.cardBg} flex items-center justify-center text-4xl font-bold ${themeClasses.text}`}
@@ -305,21 +335,19 @@ const Portfolio = () => {
                 href="https://github.com/YASH-SAWARKAR"
                 className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
               >
-                <Github className={`w-5 h-5 ${themeClasses.textSecondary}`} />
+                <Github className={`w-5 h-5 ${themeClasses.textSecondary} `} />
               </a>
               <a
                 href="https://www.linkedin.com/in/yash-sawarkar-9b8857298/"
                 className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
               >
-                <Linkedin className={`w-5 h-5 ${themeClasses.textSecondary}`} />
+                <Linkedin className="w-5 h-5 text-[#0A66C2]" />
               </a>
               <a
                 href="https://www.instagram.com/s.yash_1/"
                 className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
               >
-                <Instagram
-                  className={`w-5 h-5 ${themeClasses.textSecondary}`}
-                />
+                <Instagram className="w-5 h-5 text-[#E4405F]" />
               </a>
             </div>
           </section>
@@ -345,23 +373,36 @@ const Portfolio = () => {
             </div>
           </section>
 
-          {/* Skills Section */}
+          {/* Skills Section - Flex Layout */}
           <section id="skills" className="py-16">
-            <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
-              Skills & Technologies
+            <h2
+              className={`text-2xl font-bold mb-6 ${themeClasses.text} font-sans`}
+            >
+              Stack
             </h2>
             <div
-              className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
+              className={`p-4 sm:p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
             >
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill, index) => (
-                  <span
-                    key={index}
-                    className={`px-4 py-2 rounded-lg ${themeClasses.border} border ${themeClasses.textSecondary} ${themeClasses.hoverBg} hover:${themeClasses.accent} transition-all duration-300 cursor-pointer`}
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
+                {skills.map((skill, index) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex flex-col items-center p-3 sm:p-4 rounded-lg ${themeClasses.hoverBg} transition-all duration-300 cursor-pointer group hover:scale-105 min-w-[80px] sm:min-w-[100px]`}
+                    >
+                      <IconComponent
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mb-2 transition-colors duration-300"
+                        style={{ color: isDark ? skill.color : skill.color }}
+                      />
+                      <span
+                        className={`text-xs sm:text-sm ${themeClasses.textSecondary} group-hover:${themeClasses.accent} transition-colors text-center leading-tight`}
+                      >
+                        {skill.name}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -415,6 +456,7 @@ const Portfolio = () => {
               ))}
             </div>
           </section>
+
           {/* Footer with Working Contact Form */}
           <footer
             className={`${themeClasses.bg} ${themeClasses.border} border-t mt-16`}

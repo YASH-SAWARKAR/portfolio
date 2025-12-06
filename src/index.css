@@ -15,3 +15,8 @@
     font-family: "IBM Plex Sans", sans-serif;
   }
 }
+html,
+body {
+  background-color: #000; /* or slate-900 */
+  min-height: 100%;
+}
