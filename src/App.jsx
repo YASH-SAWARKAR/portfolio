@@ -68,16 +68,16 @@ const Portfolio = () => {
     {
       name: "EzEdits Photo Editor",
       description:
-        "Full-stack e-commerce solution built with React and Node.js, featuring user authentication, and real-time inventory management.",
+        "An AI powered Photo Editing Application Having features like Crop, Resize, Background Removal, Image Upscaling.",
       tech: ["Next.Js", "React", "Vercel", "Shadcn/UI "],
       link: "https://ezedits.vercel.app/",
     },
 
     {
-      name: "Blog Application",
+      name: "Personal Portfolio Website",
       description:
-        "A modern blog platform with user authentication, post creation, and commenting features.",
-      tech: ["React", "Appwrite", "TailwindCSS"],
+        "A personal portfolio website to showcase my projects, skills, and experience as a software engineer.",
+      tech: ["React", "TailwindCSS", "vercel"],
       link: "https://github.com/YASH-SAWARKAR/_React/tree/main/12MegaBlog",
     },
     {
@@ -88,7 +88,7 @@ const Portfolio = () => {
       link: "https://github.com/YASH-SAWARKAR/crm",
     },
     {
-      name: "Job Portal",
+      name: "Job Portal Website",
       description:
         "A comprehensive job portal application that connects job seekers with employers, featuring job listings, applications, and user profiles.",
       tech: ["React", "MongoDB", "Express", "Node.js"],
