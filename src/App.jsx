@@ -78,7 +78,7 @@ const Portfolio = () => {
       description:
         "A personal portfolio website to showcase my projects, skills, and experience as a software engineer.",
       tech: ["React", "TailwindCSS", "vercel"],
-      link: "https://github.com/YASH-SAWARKAR/_React/tree/main/12MegaBlog",
+      link: "https://portfolio-lyart-eta-61.vercel.app/",
     },
     {
       name: "Contribution to Frappe CRM APP",
@@ -99,11 +99,11 @@ const Portfolio = () => {
   const themeClasses = {
     bg: isDark ? "bg-black" : "bg-white",
     text: isDark ? "text-white" : "text-black",
-    textSecondary: isDark ? "text-gray-400" : "text-gray-600",
+    textSecondary: isDark ? "text-neutral-400" : "text-neutral-500",
     textMuted: isDark ? "text-gray-500" : "text-gray-500",
-    border: isDark ? "border-gray-800" : "border-gray-200",
+    border: isDark ? "border-neutral-900" : "border-neutral-200",
     cardBg: isDark ? "bg-black" : "bg-white",
-    hoverBg: isDark ? "hover:bg-gray-800" : "hover:bg-gray-100",
+    hoverBg: isDark ? "hover:bg-neutral-800" : "hover:bg-neutral-200",
     accent: isDark ? "text-white" : "text-black",
   };
 
@@ -164,9 +164,9 @@ const Portfolio = () => {
         <div className="max-w-3xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <h1 className={`text-xl font-bold ${themeClasses.text} `}>
+              <a href="#" className={`${themeClasses.text} `}>
                 Portfolio
-              </h1>
+              </a>
               <div className="hidden md:flex space-x-6">
                 <a
                   href="#about"
@@ -373,43 +373,9 @@ const Portfolio = () => {
             </div>
           </section>
 
-          {/* Skills Section - Flex Layout */}
-          <section id="skills" className="py-16">
-            <h2
-              className={`text-2xl font-bold mb-6 ${themeClasses.text} font-sans`}
-            >
-              Stack
-            </h2>
-            <div
-              className={`p-4 sm:p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
-            >
-              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
-                {skills.map((skill, index) => {
-                  const IconComponent = skill.icon;
-                  return (
-                    <div
-                      key={index}
-                      className={`flex flex-col items-center p-3 sm:p-4 rounded-lg ${themeClasses.hoverBg} transition-all duration-300 cursor-pointer group hover:scale-105 min-w-[80px] sm:min-w-[100px]`}
-                    >
-                      <IconComponent
-                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mb-2 transition-colors duration-300"
-                        style={{ color: isDark ? skill.color : skill.color }}
-                      />
-                      <span
-                        className={`text-xs sm:text-sm ${themeClasses.textSecondary} group-hover:${themeClasses.accent} transition-colors text-center leading-tight`}
-                      >
-                        {skill.name}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-
           {/* Projects Section */}
           <section id="projects" className="py-16">
-            <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
+            <h2 className={`text-2xl font-bold  ${themeClasses.text}`}>
               Featured Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -456,7 +422,39 @@ const Portfolio = () => {
               ))}
             </div>
           </section>
-
+          {/* Skills Section - Flex Layout */}
+          <section id="skills" className="py-16">
+            <h2
+              className={`text-2xl font-bold mb-6 ${themeClasses.text} font-sans`}
+            >
+              Stack
+            </h2>
+            <div
+              className={`p-4 sm:p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
+            >
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
+                {skills.map((skill, index) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex flex-col items-center p-3 sm:p-4 rounded-lg ${themeClasses.hoverBg} transition-all duration-300 cursor-pointer group hover:scale-105 min-w-[80px] sm:min-w-[100px]`}
+                    >
+                      <IconComponent
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 mb-2 transition-colors duration-300"
+                        style={{ color: isDark ? skill.color : skill.color }}
+                      />
+                      <span
+                        className={`text-xs sm:text-sm ${themeClasses.textSecondary} group-hover:${themeClasses.accent} transition-colors text-center leading-tight`}
+                      >
+                        {skill.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
           {/* Footer with Working Contact Form */}
           <footer
             className={`${themeClasses.bg} ${themeClasses.border} border-t mt-16`}
