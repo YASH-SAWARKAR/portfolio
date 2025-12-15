@@ -78,14 +78,14 @@ const Portfolio = () => {
       description:
         "A personal portfolio website to showcase my projects, skills, and experience as a software engineer.",
       tech: ["React", "TailwindCSS", "vercel"],
-      link: "https://portfolio-lyart-eta-61.vercel.app/",
+      link: "https://yashsawarkar.vercel.app/",
     },
     {
       name: "Contribution to Frappe CRM APP",
       description:
         "A CRM is an Open Source application built using the Frappe framework to manage customer relationships and sales processes.",
       tech: ["Vue", "TypeScript", "Python", "Git", "Frappe Framework"],
-      link: "https://github.com/YASH-SAWARKAR/crm",
+      link: "https://github.com/frappe/crm/pull/1141",
     },
     {
       name: "Job Portal Website",
@@ -353,7 +353,7 @@ const Portfolio = () => {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-1 ">
+          <section id="about" className="py-1">
             <h2 className={`text-2xl font-bold mb-6 ${themeClasses.text}`}>
               About
             </h2>
@@ -375,7 +375,7 @@ const Portfolio = () => {
 
           {/* Projects Section */}
           <section id="projects" className="py-16">
-            <h2 className={`text-2xl font-bold  ${themeClasses.text}`}>
+            <h2 className={`text-2xl font-bold pb-5 ${themeClasses.text}`}>
               Featured Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -423,7 +423,7 @@ const Portfolio = () => {
             </div>
           </section>
           {/* Skills Section - Flex Layout */}
-          <section id="skills" className="py-16">
+          <section id="skills" className="py-8">
             <h2
               className={`text-2xl font-bold mb-6 ${themeClasses.text} font-sans`}
             >
