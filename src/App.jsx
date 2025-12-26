@@ -37,6 +37,8 @@ import {
   SiMysql,
   SiTypescript,
   SiShadcnui,
+  SiNextdotjs,
+  SiVercel,
 } from "react-icons/si";
 import { PiOpenAiLogoLight } from "react-icons/pi";
 
@@ -64,9 +66,27 @@ const Portfolio = () => {
     },
   ];
 
+  const techMeta = {
+    React: { icon: SiReact, color: "#61DAFB" },
+    "Next.Js": { icon: SiNextdotjs, color: isDark ? "#fff" : "#000" },
+    TailwindCSS: { icon: SiTailwindcss, color: "#06B6D4" },
+    Vercel: { icon: SiVercel, color: isDark ? "#fff" : "#000" },
+    MongoDB: { icon: SiMongodb, color: "#47A248" },
+    Express: {
+      icon: SiExpress,
+      color: isDark ? "#fff" : "#000",
+    },
+    "Node.js": { icon: SiNodedotjs, color: "#339933" },
+    TypeScript: { icon: SiTypescript, color: "#3178C6" },
+    Vue: { icon: SiVuedotjs, color: "#4FC08D" },
+    Python: { icon: SiPython, color: "#3776AB" },
+    Git: { icon: SiGit, color: "#F05032" },
+  };
+
   const projects = [
     {
       name: "EzEdits Photo Editor",
+      photo: "/ezedit.png",
       description:
         "An AI powered Photo Editing Application Having features like Crop, Resize, Background Removal, Image Upscaling.",
       tech: ["Next.Js", "React", "Vercel", "Shadcn/UI "],
@@ -75,13 +95,15 @@ const Portfolio = () => {
 
     {
       name: "Personal Portfolio Website",
+      photo: "/portfolio.png",
       description:
-        "A personal portfolio website to showcase my projects, skills, and experience as a software engineer.",
-      tech: ["React", "TailwindCSS", "vercel"],
+        "A personal portfolio website to showcase my projects, skills, and experience as a frontend Designer and frondend Developer.",
+      tech: ["React", "TailwindCSS", "Vercel", "TypeScript"],
       link: "https://yashsawarkar.vercel.app/",
     },
     {
-      name: "Contribution to Frappe CRM APP",
+      name: "Contribution to Frappe CRM ",
+      photo: "/crm.png",
       description:
         "A CRM is an Open Source application built using the Frappe framework to manage customer relationships and sales processes.",
       tech: ["Vue", "TypeScript", "Python", "Git", "Frappe Framework"],
@@ -89,6 +111,7 @@ const Portfolio = () => {
     },
     {
       name: "Job Portal Website",
+      photo: "/job_portal.png",
       description:
         "A comprehensive job portal application that connects job seekers with employers, featuring job listings, applications, and user profiles.",
       tech: ["React", "MongoDB", "Express", "Node.js"],
@@ -97,12 +120,12 @@ const Portfolio = () => {
   ];
 
   const themeClasses = {
-    bg: isDark ? "bg-black" : "bg-white",
+    bg: isDark ? "bg-black" : "bg-[lab(100%_0_0)]",
     text: isDark ? "text-white" : "text-black",
     textSecondary: isDark ? "text-neutral-400" : "text-neutral-500",
-    textMuted: isDark ? "text-gray-500" : "text-gray-500",
+    textMuted: "text-neutral-500",
     border: isDark ? "border-neutral-900" : "border-neutral-200",
-    cardBg: isDark ? "bg-black" : "bg-white",
+    cardBg: isDark ? "bg-[lab(2.75381%_0_0)]" : "bg-[lab(100%_0_0)]",
     hoverBg: isDark ? "hover:bg-neutral-800" : "hover:bg-neutral-200",
     accent: isDark ? "text-white" : "text-black",
   };
@@ -158,15 +181,19 @@ const Portfolio = () => {
       className={`min-h-screen transition-colors duration-300 ${themeClasses.bg}`}
     >
       {/* Navigation */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 ${themeClasses.bg} ${themeClasses.border} border-b backdrop-blur-sm bg-opacity-80`}
-      >
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-opacity-80 transition-colors duration-300">
         <div className="max-w-3xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <a href="#" className={`${themeClasses.text} `}>
-                Portfolio
+              <a href="#" className="flex items-center gap-3 group">
+                <div
+                  className={`w-10 h-10 rounded-xl overflow-hidden border ${themeClasses.border}
+                        transition-transform duration-200 group-hover:scale-[0.90] ml-4 align-middle flex items-center justify-center border-white border-1`}
+                >
+                  <img src="/avatar.png" alt="" />
+                </div>
               </a>
+
               <div className="hidden md:flex space-x-6">
                 <a
                   href="#about"
@@ -197,7 +224,7 @@ const Portfolio = () => {
               </a>
               <button
                 onClick={() => setIsDark(!isDark)}
-                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-colors hover:cursor-pointer`}
+                className={`p-2 rounded-lg ${themeClasses.textSecondary} ${themeClasses.hoverBg} transition-all duration-200 hover:cursor-pointer`}
               >
                 {isDark ? (
                   <Sun className="w-4 h-4" />
@@ -224,6 +251,7 @@ const Portfolio = () => {
                   <img src="/avatar.png" alt="avatar" />
                 </div>
               </div>
+
               <div className="max-w-md mx-auto flex flex-col items-center py-4">
                 <h1
                   className={`text-4xl md:text-5xl font-bold mb-4 ${themeClasses.text}`}
@@ -237,7 +265,7 @@ const Portfolio = () => {
             </div>
 
             {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-3xl mx-auto py-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 max-w-3xl mx-auto py-4">
               <div
                 className={`p-4 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border text-left`}
               >
@@ -264,7 +292,10 @@ const Portfolio = () => {
                   </span>
                 </div>
                 <p className={`font-medium ${themeClasses.text}`}>
-                  B.Tech (2021-2025)
+                  B.Tech{" "}
+                  <span className={`text-sm ${themeClasses.textMuted}`}>
+                    (2021-2025)
+                  </span>
                 </p>
               </div>
 
@@ -324,7 +355,7 @@ const Portfolio = () => {
                   </span>
                 </div>
                 <p className={`font-medium ${themeClasses.text}`}>
-                  Full Stack Development
+                  Front end Development
                 </p>
               </div>
             </div>
@@ -376,13 +407,13 @@ const Portfolio = () => {
           {/* Projects Section */}
           <section id="projects" className="py-16">
             <h2 className={`text-2xl font-bold pb-5 ${themeClasses.text}`}>
-              Featured Projects
+              Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.hoverBg} transition-all duration-300 hover:scale-105`}
+                  className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.hoverBg} `}
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3
@@ -401,22 +432,44 @@ const Portfolio = () => {
                       />
                     </a>
                   </div>
-
+                  <div className="mb-4 overflow-hidden rounded-lg border border-neutral-800">
+                    <img
+                      src={project.photo}
+                      alt={project.name}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  </div>
                   <p
                     className={`${themeClasses.textSecondary} text-sm leading-relaxed mb-4`}
                   >
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className={`px-2 py-1 text-xs rounded ${themeClasses.border} border ${themeClasses.textMuted}`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <span
+                    className={`${themeClasses.textMuted} text-sm leading-relaxed mb-4`}
+                  >
+                    Technologies
+                  </span>
+                  <div className="flex flex-wrap ">
+                    {project.tech.map((tech, techIndex) => {
+                      const meta = techMeta[tech];
+                      if (!meta) return null;
+
+                      const Icon = meta.icon;
+
+                      return (
+                        <div
+                          key={techIndex}
+                          className={`p-2 rounded-lg ${themeClasses.hoverBg} transition-all duration-200  hover:scale-130`}
+                          title={tech}
+                        >
+                          <Icon
+                            className="w-4 h-4 sm:w-5 sm:h-5"
+                            style={{ color: meta.color }}
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
