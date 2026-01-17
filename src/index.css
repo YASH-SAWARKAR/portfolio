@@ -21,3 +21,16 @@ body {
   background-color: #000; /* or slate-900 */
   min-height: 100%;
 }
+
+@theme {
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translate(100%);
+    }
+    to {
+      transform: translate(-100%);
+    }
+  }
+}

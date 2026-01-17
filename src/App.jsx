@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { BackgroundLines } from "@/components/ui/background-lines";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { StarsBackground } from "@/components/ui/stars-background";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import {
   Github,
@@ -41,7 +38,8 @@ import {
   SiVercel,
 } from "react-icons/si";
 import { PiOpenAiLogoLight } from "react-icons/pi";
-
+import { motion } from "framer-motion";
+import { TimeLine } from "./components/ui/timeline";
 const Portfolio = () => {
   const [isDark, setIsDark] = useState(true);
 
@@ -110,7 +108,7 @@ const Portfolio = () => {
       link: "https://github.com/frappe/crm/pull/1141",
     },
     {
-      name: "Job Portal Website",
+      name: "Job Hunt Website's Backend",
       photo: "/job_portal.png",
       description:
         "A comprehensive job portal application that connects job seekers with employers, featuring job listings, applications, and user profiles.",
@@ -177,7 +175,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div
+    <motion.div
       className={`min-h-screen transition-colors duration-300 ${themeClasses.bg}`}
     >
       {/* Navigation */}
@@ -364,19 +362,19 @@ const Portfolio = () => {
             <div className="flex justify-center space-x-4 mt-8">
               <a
                 href="https://github.com/YASH-SAWARKAR"
-                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border shadow-xl `}
               >
                 <Github className={`w-5 h-5 ${themeClasses.textSecondary} `} />
               </a>
               <a
                 href="https://www.linkedin.com/in/yash-sawarkar-9b8857298/"
-                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border shadow-xl`}
               >
                 <Linkedin className="w-5 h-5 text-[#0A66C2]" />
               </a>
               <a
                 href="https://www.instagram.com/s.yash_1/"
-                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border`}
+                className={`p-3 rounded-lg ${themeClasses.cardBg} ${themeClasses.hoverBg} transition-colors ${themeClasses.border} border shadow-xl`}
               >
                 <Instagram className="w-5 h-5 text-[#E4405F]" />
               </a>
@@ -411,9 +409,12 @@ const Portfolio = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, index) => (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
                   key={index}
-                  className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.hoverBg} `}
+                  className={`p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border ${themeClasses.hoverBg} transition hover:shadow-2xl duration-300`}
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3
@@ -471,7 +472,7 @@ const Portfolio = () => {
                       );
                     })}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
@@ -483,7 +484,7 @@ const Portfolio = () => {
               Stack
             </h2>
             <div
-              className={`p-4 sm:p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border`}
+              className={`p-4 sm:p-6 rounded-lg ${themeClasses.cardBg} ${themeClasses.border} border shadow-2xl z-10`}
             >
               <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
                 {skills.map((skill, index) => {
@@ -509,6 +510,8 @@ const Portfolio = () => {
             </div>
           </section>
           {/* Footer with Working Contact Form */}
+          <TimeLine themeClasses={themeClasses} />
+
           <footer
             className={`${themeClasses.bg} ${themeClasses.border} border-t mt-16`}
           >
@@ -635,14 +638,15 @@ const Portfolio = () => {
                 className={`text-center mt-8 pt-8 ${themeClasses.border} border-t`}
               >
                 <p className={`text-sm ${themeClasses.textMuted}`}>
-                  © 2024 Yash Sawarkar. All rights reserved.
+                  © {new Date().getFullYear()} Yash Sawarkar. All rights
+                  reserved.
                 </p>
               </div>
             </div>
           </footer>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
